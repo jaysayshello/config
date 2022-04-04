@@ -17,6 +17,7 @@ brew install docker
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
 brew install --cask zoom
+brew install zsh
 
 # Yabai
 brew install koekeishiya/formulae/yabai
