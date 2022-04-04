@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~/
+
 # Install Brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -41,6 +43,5 @@ brew install --cask adguard
 # zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 brew install zsh
-cd ~/
 rm -r .zshrc
 git clone https://github.com/jaysayshello/install
