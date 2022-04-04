@@ -4,6 +4,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Development
+brew install git
 brew install --cask webcatalog
 brew install --cask hyper
 brew install --cask visual-studio-code
@@ -15,6 +16,7 @@ brew install --cask studio-3t
 brew install docker
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
+brew install --cask zoom
 
 # Yabai
 brew install koekeishiya/formulae/yabai
