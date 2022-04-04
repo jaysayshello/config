@@ -13,6 +13,8 @@ brew install --cask burp-suite
 brew install --cask postman
 brew install --cask studio-3t
 brew install docker
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code
 
 # Yabai
 brew install koekeishiya/formulae/yabai
