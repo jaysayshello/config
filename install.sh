@@ -17,7 +17,6 @@ brew install docker
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
 brew install --cask zoom
-brew install zsh
 
 # Yabai
 brew install koekeishiya/formulae/yabai
@@ -38,3 +37,10 @@ brew install --cask grammarly
 brew install --cask slack
 brew install --cask setapp
 brew install --cask adguard
+
+# zshrc
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+brew install zsh
+cd ~/
+rm -r .zshrc
+git clone https://github.com/jaysayshello/install
