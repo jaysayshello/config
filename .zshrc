@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/$USERNAME/.oh-my-zsh"
+export ZSH="/Users/jay/.oh-my-zsh"
 unsetopt PROMPT_SP
 
 # Set name of the theme to load --- if set to "random", it will
@@ -28,10 +28,10 @@ ZSH_THEME="lambda"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -129,7 +129,7 @@ alias lyrcode='sshfs -o allow_other,idmap=user,defer_permissions root@192.168.2.
 alias lyrRemote='sshfs -p 6003 -o allow_other,idmap=user,defer_permissions root@justjay.duckdns.org:"/" /Users/laptop/Servers/lyr'
 
 
-#encryptio
+#encryption
 alias encrypt='gpg -c --cipher-algo AES256 --s2k-digest-algo SHA512'
 
 #hashes
@@ -148,21 +148,11 @@ alias mac='sudo macchanger -r eno1' #MAC address spoofing
 alias ip='curl icanhazip.com'
 alias knownhosts='cd ~/.ssh'
 alias mynetwork='sudo nmap -sP "192.168.2.*"'
-alias py='python3'
-alias vpn='cd ~/VPNs'
 alias speedtest='speedtest-cliv '
 alias wm='brew services restart yabai' 
 alias yabaistop='brew services stop yabai' 
-alias hping='sudo /usr/local/sbin/hping3'
 alias proxy='export HTTP_PROXY=http://127.0.0.1:8080; export HTTPS_PROXY=http://127.0.0.1:8080;'
 alias unproxy='unset HTTP_PROXY; unset HTTPS_PROXY'
-
-#git
-alias push="git push origin HEAD" # Pushes to the current branch 
-alias emptypush="git commit -m "retrigger checks" --allow-empty"
-alias fix="git add . && git commit -m "fix" && git push origin HEAD"
-#alias latestCommit="echo `git log -n 1 --pretty=format:"%H"`"
-#alias reset="git reset --hard $latestCommit"
 
 #modes
 alias working="defaultbrowser chrome"
@@ -182,6 +172,31 @@ function code {
 }
 
 
+function logs() {
+    ssh root@ec2-50-16-251-221.compute-1.amazonaws.com 'tail -f /root/ClubLinks/app.log'
+}
+
+
+# Veracode
+alias 'veracode'='docker run -it --rm -v $PWD:/home/luser -v ~/.veracode/credentials:/home/luser/.veracode/credentials veracode/api-wrapper-java:cmd'
+alias 'veracode-pipeline-scan'='docker run -it --rm -v $PWD:/home/luser -v ~/.veracode/credentials:/home/luser/.veracode/credentials veracode/pipeline-scan:cmd'
+
+
+# GCP
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jlansiquot/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jlansiquot/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jlansiquot/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jlansiquot/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+# Git
+# This is a quick alias that fetches all upstream changes and rebases the upstream main branch into your current branch
+alias 'up'='git fetch --all && git rebase origin/main'
+
+# This basically appends any outstanding changes to the last commit without changing its commit message. I personally use this in my flow where I continually amend commit to avoid a rebase later.
+alias 'append'='git commit --amend --no-edit -a'
+
 #Push to git in 1 line
 function lazygit() {
     git add .
@@ -189,49 +204,18 @@ function lazygit() {
     git push origin master
 }
 
-#Python things
+alias push="git push origin HEAD" # Pushes to the current branch 
+alias emptypush="git commit -m "retrigger checks" --allow-empty"
+alias fix="git add . && git commit -m "fix" && git push origin HEAD"
+#alias latestCommit="echo `git log -n 1 --pretty=format:"%H"`"
+#alias reset="git reset --hard $latestCommit"
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# Python
 export PYTHONPATH="/Users/jay/Development/mathbot/cogs"
 export PYTHONPATH="/Users/jay/Development/gearBot/cogs/modules"
 export PATH=$(brew --prefix openvpn)/sbin:$PATH
 export TERM=xterm-256color
-
-
-
-
-
-#Development
-function gearBot(){
-    ssh root@n0tj.com 'sudo rm -r /root/gearBot'
-    ssh root@n0tj.com 'cd /root && git clone https://github.com/n0tj/gearBot'
-    ssh root@n0tj.com 'cp /root/keys.py /root/gearBot'
-
-}
-
-export GOPATH=$HOME/go
-
-
-
-function club() {
-    #test="'//*[@id="chkd7914e05-d4d6-4c28-93d3-30c177d3976c"]'"
-    #ssh root@192.168.2.78 'echo "30 6 * * * root" > /etc/cron.d/book ' "$1" "$2" "$3" "$4" $test
-    ssh root@192.168.2.78 'echo "30 6 * * * root" > /etc/cron.d/book ' "$1" "$2" "$3" "$4" $test
-}
-
-
-function logs() {
-    ssh root@192.168.2.78 'tail -f /root/ClubLinks/app.log'
-}
-
-export PATH="/usr/local/sbin:$PATH"
-
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-alias 'veracode'='docker run -it --rm -v $PWD:/home/luser -v ~/.veracode/credentials:/home/luser/.veracode/credentials veracode/api-wrapper-java:cmd'
-
-alias 'veracode-pipeline-scan'='docker run -it --rm -v $PWD:/home/luser -v ~/.veracode/credentials:/home/luser/.veracode/credentials veracode/pipeline-scan:cmd'
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jlansiquot/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jlansiquot/Desktop/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jlansiquot/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jlansiquot/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
