@@ -29,6 +29,7 @@ brew services start skhd
 brew services start yabai
 
 # Misc
+brew install --cask google-chrome
 brew install --cask discord
 brew install --cask spotify
 brew install --cask firefox
