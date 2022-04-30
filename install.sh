@@ -20,6 +20,7 @@ brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
 brew install --cask zoom
 brew install --cask gpg-suite
+brew install --cask devutils
 
 # Yabai
 brew install koekeishiya/formulae/yabai
