@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jay/.oh-my-zsh"
+export ZSH="/Users/$HOME/.oh-my-zsh"
 unsetopt PROMPT_SP
 
 # Set name of the theme to load --- if set to "random", it will
