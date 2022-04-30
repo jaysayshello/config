@@ -1,11 +1,9 @@
 #!/bin/bash
 
-cd ~/
+cd $HOME
 
 # Install Brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$HOME/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Development
 brew install git
@@ -48,8 +46,9 @@ brew install --cask adguard
 # zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 brew install zsh
-rm -r .zshrc
 git clone https://github.com/jaysayshello/config
 cp ~/config/.skhdrc ~/
 cp ~/config/.yabairc ~/
 cp ~/config/.zshrc ~/
+source ~/.zshrc
+wm
