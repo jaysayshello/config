@@ -9,6 +9,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Development
 brew install git
+brew install go
 brew install --cask webcatalog
 brew install --cask hyper
 brew install --cask visual-studio-code
