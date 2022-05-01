@@ -22,6 +22,11 @@ brew install --cask zoom
 brew install --cask gpg-suite
 brew install --cask devutils
 
+# Mac OS
+defaults write com.apple.dock autohide-delay -float 0
+killall Dock
+
+
 # Yabai
 brew install koekeishiya/formulae/yabai
 sudo yabai --install-sa
