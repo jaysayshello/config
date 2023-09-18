@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/$HOME/.oh-my-zsh"
+export ZSH="/$HOME/.oh-my-zsh"
 unsetopt PROMPT_SP
 
 # Set name of the theme to load --- if set to "random", it will
@@ -122,8 +122,8 @@ alias lord='ssh -p 6001 jay@n0tj.duckdns.org'
 alias sftpzeus='sftp -P 6003 jay@n0tj.duckdns.org'
 alias lyr='ssh -p 6003 root@ip.n0tj.com'
 alias sftplyr='sftp -P 6003 root@justjay.duckdns.org'
-alias odin=' ssh root@ec2-50-16-251-221.compute-1.amazonaws.com'
-alias odinsftp='sftp -i "~/capstone-key.pem" root@ec2-50-16-251-221.compute-1.amazonaws.com'
+alias odin='ssh root@ec2-52-4-177-109.compute-1.amazonaws.com'
+alias odinsftp='sftp root@ec2-54-84-210-229.compute-1.amazonaws.com'
 alias odincode='sshfs -o allow_other,idmap=user,defer_permissions root@ec2-50-16-251-221.compute-1.amazonaws.com:"/var/www/jay/node-forms-starter" /Users/laptop/Servers/odin'
 alias lyrcode='sshfs -o allow_other,idmap=user,defer_permissions root@192.168.2.78:"/" /Users/laptop/Servers/lyr'
 alias lyrRemote='sshfs -p 6003 -o allow_other,idmap=user,defer_permissions root@justjay.duckdns.org:"/" /Users/laptop/Servers/lyr'
@@ -147,7 +147,7 @@ alias mac='sudo macchanger -r eno1' #MAC address spoofing
 #utility
 alias ip='curl icanhazip.com'
 alias knownhosts='cd ~/.ssh'
-alias mynetwork='sudo nmap -sP "192.168.2.*"'
+alias mynetwork='sudo nmap -sP "10.88.111.*"'
 alias speedtest='speedtest-cliv '
 alias wm='brew services restart yabai' 
 alias yabaistop='brew services stop yabai' 
@@ -156,7 +156,7 @@ alias unproxy='unset HTTP_PROXY; unset HTTPS_PROXY'
 
 #modes
 alias working="defaultbrowser chrome"
-alias chill="defaultbrowser safari"
+alias vibe="defaultbrowser safari"
 
 
 #Open files in VS Code with the alias code
@@ -204,6 +204,13 @@ function lazygit() {
     git push origin master
 }
 
+function gpush(){
+    docker build --platform linux/amd64 -t golfbot .
+    docker tag golfbot docker.io/n0tj/golfbot:latest
+    docker push docker.io/n0tj/golfbot:latest
+
+}
+
 alias push="git push origin HEAD" # Pushes to the current branch 
 alias emptypush="git commit -m "retrigger checks" --allow-empty"
 alias fix="git add . && git commit -m "fix" && git push origin HEAD"
@@ -219,3 +226,24 @@ export PYTHONPATH="/Users/jay/Development/mathbot/cogs"
 export PYTHONPATH="/Users/jay/Development/gearBot/cogs/modules"
 export PATH=$(brew --prefix openvpn)/sbin:$PATH
 export TERM=xterm-256color
+
+
+alias ticket="/Users/laptop/Desktop/pr-automation/./autopr"
+
+
+function jira(){
+    cd /Users/laptop/Desktop
+    ./deleteJiraIssues.sh
+}
+
+
+
+
+function lol(){
+
+    open -a "/Applications/Safari.app" "https://youtube.com"
+    open -n "/Applications/Notion.app"
+    open -n"/Applications/Safari.app"
+   # open -n ./Safari.app
+   # open -a ./Notion.app
+}
