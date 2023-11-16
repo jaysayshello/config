@@ -56,6 +56,7 @@ brew install --cask adguard
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 brew install zsh
 git clone https://github.com/jaysayshello/config
+git clone http://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
 cp ~/config/.skhdrc ~/
 cp ~/config/.yabairc ~/
 cp ~/config/.zshrc ~/
