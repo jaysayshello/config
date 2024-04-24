@@ -149,7 +149,7 @@ alias ip='curl icanhazip.com'
 alias knownhosts='cd ~/.ssh'
 alias mynetwork='sudo nmap -sP "10.88.111.*"'
 alias speedtest='speedtest-cliv'
-alias wm='yabai --start-service'
+alias wm='yabai --restart-service; skhd --reload'
 alias yabaistop='brew services stop yabai' 
 alias proxy='export HTTP_PROXY=http://127.0.0.1:8080; export HTTPS_PROXY=http://127.0.0.1:8080;'
 alias unproxy='unset HTTP_PROXY; unset HTTPS_PROXY'
@@ -250,3 +250,21 @@ function lol(){
 
 
 unsetopt PROMPT_SP
+
+function yabai_center(){
+# Set the desired window size
+width=1700
+height=1200
+
+# Calculate the coordinates to center the window
+# You can adjust these values based on your screen resolution and desired window size
+screen_width=$(yabai -m query --displays --display | jq '.frame.w')
+screen_height=$(yabai -m query --displays --display | jq '.frame.h')
+x=$(echo "scale=0; ($screen_width - $width) / 2" | bc)
+y=$(echo "scale=0; ($screen_height - $height) / 2" | bc)
+
+# Resize and move the window
+yabai -m window --resize abs:$width:$height
+yabai -m window --move abs:$x:$y
+
+}
